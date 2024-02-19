@@ -1,0 +1,16 @@
+<h1>Welcome to home page</h1>
+
+
+<% if user_signed_in? %>
+<h1>Username: <%= current_user.username %></h1>
+
+<%= link_to 'Sign Out', destroy_user_session_path %>
+<% else %>
+  <%= link_to 'Sign In', new_user_session_path %>
+<% end %>
+<br>
+<%= link_to "Posts",posts_path%>
+<br>
+<%= link_to "Feeds", home_feed_path %>
+
+

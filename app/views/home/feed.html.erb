@@ -1,0 +1,29 @@
+<%link_to "Go for Feed", home_feed_path %>
+<% if  @feeds.present? %>
+  <% @feeds.each do |feed| %>
+    <div>
+      <%= turbo_frame_tag dom_id(feed) do %>
+        <strong>Description:</strong> <%= feed.description %>
+        <%= Post.post_types[feed.post_type] %>
+        <div class="align-right">
+          Created By: <%= feed.user.email %><br>
+          Created At: <%= feed.created_at %>
+        </div>
+      <% end %>
+
+      <%= turbo_frame_tag edit_dom_id(feed) do %>
+       
+          <%= link_to "Edit Post", edit_post_path(feed) %>
+       
+        <% end %>
+    
+
+      <%= turbo_frame_tag like_dom_id(feed) do %>
+        <%= get_link_for_like_unlike(feed) %>
+      <% end %>
+    </div>
+    <hr>
+  <% end %>
+<% else %>
+  <p>No feeds available</p>
+<% end %>

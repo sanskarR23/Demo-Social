@@ -1,0 +1,5 @@
+<h2>Enter OTP</h2>
+<%= form_tag verify_otp_path do %>
+  <%= text_field_tag :otp, nil, placeholder: 'Enter OTP' %>
+  <%= submit_tag 'Verify' %>
+<% end %>
